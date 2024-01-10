@@ -1,0 +1,12 @@
+
+#buildStage
+FROM node:14.5.0 as buildStage
+WORKDIR /streamme
+RUN rm -rf node_modules
+COPY package*.json ./
+RUN npm install
+COPY . .
+
+CMD NODE_ENV=development node server/server.js
+EXPOSE 3000
+

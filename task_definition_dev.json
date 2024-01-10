@@ -1,0 +1,39 @@
+{
+  "executionRoleArn": "arn:aws:iam::166534338535:role/ecsTaskExecutionRole",
+  "containerDefinitions": [
+    {
+      "logConfiguration": {
+        "logDriver": "awslogs",
+        "options": {
+          "awslogs-group": "/ecs/blipy-mailing-server-dev-task",
+          "awslogs-region": "eu-west-2",
+          "awslogs-stream-prefix": "ecs"
+        }
+      },
+      "portMappings": [
+        {
+          "hostPort": 2850,
+          "protocol": "tcp",
+          "containerPort": 2850
+        }
+      ],
+      "cpu": 0,
+      "environment": [],
+      "mountPoints": [],
+      "memoryReservation": 512,
+      "volumesFrom": [],
+      "image": "166534338535.dkr.ecr.eu-west-2.amazonaws.com/blipy-mailing-server-dev-repo:latest",
+      "essential": true,
+      "name": "blipy-mailing-server-dev-container"
+    }
+  ],
+  "placementConstraints": [],
+  "taskRoleArn": "arn:aws:iam::166534338535:role/ecs-task-role-dev",
+  "family": "blipy-mailing-server-dev-task",
+  "requiresCompatibilities": [
+    "FARGATE"
+  ],
+  "networkMode": "awsvpc",
+  "cpu": "256",
+  "memory": "512"
+}

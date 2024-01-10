@@ -1,0 +1,8 @@
+node_modules
+dist
+seeds
+localStorage
+temp
+.git
+.idea
+logs

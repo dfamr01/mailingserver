@@ -1,0 +1,133 @@
+{
+  "parser": "babel-eslint",
+  "parserOptions": {
+    "sourceType": "module",
+    "allowImportExportEverywhere": true
+  },
+  "extends": [
+    "airbnb",
+    "prettier"
+  ],
+  "env": {
+    "es6": true,
+    "browser": true,
+    "node": true,
+    "jquery": true,
+    "mocha": true,
+    "worker": true
+  },
+  "rules": {
+    "arrow-parens": [
+      "off"
+    ],
+    "arrow-body-style": "off",
+    "consistent-return": "off",
+    "comma-dangle": "off",
+    "no-shadow": "off",
+    "react/no-array-index-key": "off",
+    "generator-star-spacing": "off",
+    "import/no-unresolved": "off",
+    "import/no-extraneous-dependencies": "off",
+    "jsx-a11y/anchor-is-valid": "off",
+    "jsx-a11y/no-static-element-interactions": "off",
+    "jsx-a11y/click-events-have-key-events": "off",
+    "no-console": "error",
+    "no-use-before-define": "off",
+    "no-multi-assign": "off",
+    "promise/param-names": "error",
+    "promise/no-native": "off",
+    "react/sort-comp": [
+      "error",
+      {
+        "order": [
+          "type-annotations",
+          "static-methods",
+          "lifecycle",
+          "everything-else",
+          "render"
+        ]
+      }
+    ],
+    "react/jsx-no-bind": "off",
+    "react/jsx-filename-extension": [
+      "error",
+      {
+        "extensions": [
+          ".js"
+        ]
+      }
+    ],
+    "react/prefer-stateless-function": "off",
+    "react/require-default-props": "off",
+    "no-param-reassign": "off",
+    "compat/compat": "off",
+    "camelcase": "off",
+    "global-require": "off",
+    "prefer-destructuring": "off",
+    "promise/always-return": "off",
+    "prefer-const": "off",
+    "no-undef": "off",
+    "prefer-arrow-callback": "off",
+    "no-underscore-dangle": "off",
+    "func-names": "off",
+    "no-unused-expressions": "off",
+    "no-unused-vars": "off",
+    "spaced-comment": "off",
+    "no-buffer-constructor": "off",
+    "no-else-return": "off",
+    "yoda": "off",
+    "react/jsx-closing-bracket-location": "off",
+    "one-var": "off",
+    "no-plusplus": "off",
+    "no-prototype-builtins": "off",
+    "prefer-template": "off",
+    "object-shorthand": "off",
+    "promise/catch-or-return": "off",
+    "no-lonely-if": "off",
+    "operator-assignment": "off",
+    "no-restricted-globals": "off",
+    "eqeqeq": "off",
+    "no-restricted-syntax": "off",
+    "no-return-assign": "off",
+    "dot-notation": "off",
+    "no-sequences": "off",
+    "import/no-named-as-default": "off",
+    "react/no-unescaped-entities": "off",
+    "react/forbid-prop-types": "off",
+    "react/no-unused-prop-types": "off",
+    "jsx-a11y/anchor-has-content": "off",
+    "no-await-in-loop": "off",
+    "import/newline-after-import": "off",
+    "no-useless-constructor": "off",
+    "react/jsx-first-prop-new-line": "off",
+    "react/jsx-max-props-per-line": "off",
+    "react/jsx-tag-spacing": "off",
+    "react/jsx-indent-props": "off",
+    "react/jsx-indent": "off",
+    "jsx-a11y/heading-has-content": "off",
+    "import/first": "off",
+    "class-methods-use-this": "off",
+    "react/no-string-refs": "off",
+    "radix": "off",
+    "react/no-unused-state": "off",
+    "react/prop-types": "off",
+    "react/jsx-no-target-blank": "off",
+    "react/jsx-closing-tag-location": "off",
+    "jsx-a11y/no-noninteractive-element-interactions": "off",
+    "jsx-a11y/label-has-for": "off",
+    "no-unneeded-ternary": "off",
+    "jsx-a11y/alt-text": "off",
+    "default-case": "off",
+    "prefer-promise-reject-error": "off",
+    "react/jsx-curly-brace-presence": "off",
+    "jsx-a11y/iframe-has-title": "off",
+    "react/default-props-match-prop-types": "off",
+    "jsx-a11y/no-autofocus": "off",
+    "prefer-promise-reject-errors": "off"
+  },
+  "plugins": [
+    "flowtype",
+    "promise",
+    "compat"
+  ]
+}

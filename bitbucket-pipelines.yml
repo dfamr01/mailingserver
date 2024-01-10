@@ -1,0 +1,90 @@
+pipelines:
+
+  branches:
+    dev:
+      - step:
+          name: Installing
+          image: node:14.5.0
+          caches:
+            - node
+          script:
+            - git clone git@bitbucket.org:steamme/shared.git ./server/shared
+            - rm -rf package-lock.json
+            - rm -rf node_modules
+            - npm install
+          artifacts:
+            - server/shared/**
+      - step:
+          name: Build Docker Image
+          services:
+            - docker
+          image: atlassian/pipelines-awscli
+          script:
+            - echo $(aws ecr get-login --no-include-email --region eu-west-2)  > login.sh
+
+            - sh login.sh
+
+            - docker build -f Dockerfile-dev -t $ECR_DEV_REPO_NAME .
+
+            - docker tag $ECR_DEV_REPO_NAME:latest $ECR_DEV_REPO_URI:latest
+
+            - docker push $ECR_DEV_REPO_URI:latest
+      - step:
+          name: Deploy to Staging
+          services:
+            - docker
+          deployment: staging
+          script:
+            - pipe: atlassian/aws-ecs-deploy:1.0.3
+              variables:
+                AWS_ACCESS_KEY_ID: $AWS_ACCESS_KEY_ID
+                AWS_SECRET_ACCESS_KEY: $AWS_SECRET_ACCESS_KEY
+                AWS_DEFAULT_REGION: $AWS_DEFAULT_REGION
+                CLUSTER_NAME: $ECS_DEV_CLUSTER_NAME
+                SERVICE_NAME: $ECS_SERVICE_DEV_NAME
+                TASK_DEFINITION: 'task_definition_dev.json'
+                DEBUG: "true"
+
+    prod:
+      - step:
+          name: Installing
+          image: node:14.5.0
+          caches:
+            - node
+          script:
+            - git clone git@bitbucket.org:steamme/shared.git ./server/shared
+            - rm -rf package-lock.json
+            - rm -rf node_modules
+            - npm install
+          artifacts:
+            - server/shared/**
+      - step:
+          name: Build Docker Image
+          services:
+            - docker
+          image: atlassian/pipelines-awscli
+          script:
+            - echo $(aws ecr get-login --no-include-email --region eu-west-2)  > login.sh
+
+            - sh login.sh
+
+            - docker build -f Dockerfile-prod -t $ECR_PROD_REPO_NAME --build-arg DB_PWD=$DB_PWD --build-arg ADMIN_PASS=$ADMIN_PASS --build-arg SESSION_SECRET=$SESSION_SECRET --build-arg FACEBOOK_SECRET=$FACEBOOK_SECRET --build-arg GOOGLE_SECRET=$GOOGLE_SECRET --build-arg LINKEDIN_SECRET=$LINKEDIN_SECRET --build-arg CLOUDINARY_SECRET=$CLOUDINARY_SECRET --build-arg STRIP_SECRET_KEY=$STRIP_SECRET_KEY --build-arg SENDGRID_API_KEY=$SENDGRID_API_KEY --build-arg ZOOM_SDK_SECRET=$ZOOM_SDK_SECRET --build-arg ZOOM_JWT_API_SECRET=$ZOOM_JWT_API_SECRET .
+
+            - docker tag $ECR_PROD_REPO_NAME:latest $ECR_PROD_REPO_URI:latest
+
+            - docker push $ECR_PROD_REPO_URI:latest
+      - step:
+          name: Deploy to Staging
+          services:
+            - docker
+          deployment: staging
+          script:
+            - pipe: atlassian/aws-ecs-deploy:1.0.3
+              variables:
+                AWS_ACCESS_KEY_ID: $AWS_ACCESS_KEY_ID
+                AWS_SECRET_ACCESS_KEY: $AWS_SECRET_ACCESS_KEY
+                AWS_DEFAULT_REGION: $AWS_DEFAULT_REGION
+                CLUSTER_NAME: $ECS_PROD_CLUSTER_NAME
+                SERVICE_NAME: $ECS_SERVICE_PROD_NAME
+                TASK_DEFINITION: 'task_definition_prod.json'
+                DEBUG: "true"
