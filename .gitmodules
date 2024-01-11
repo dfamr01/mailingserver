@@ -1,0 +1,3 @@
+[submodule "server/shared"]
+	path = server/shared
+	url = https://github.com/dfamr01/shared.git

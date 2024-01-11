@@ -25,7 +25,7 @@ Desktop.ini
 .Spotlight-V100
 .Trashes
 
-### shared server files
-shared
-shared/
-/server/shared/
+# ### shared server files
+# shared
+# shared/
+# /server/shared/
