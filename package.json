@@ -17,7 +17,7 @@
     },
     "dependencies": {
         "@aws-sdk/client-s3": "^3.299.0",
-        "@aws-sdk/node-http-handler": "^3.296.0",
+        "@aws-sdk/s3-request-presigner": "^3.498.0",
         "@sendgrid/mail": "^7.4.5",
         "axios": "^0.21.1",
         "body-parser": "^1.19.0",
