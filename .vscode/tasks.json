@@ -1,0 +1,45 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "type": "npm",
+            "script": "debug:server",
+            "isBackground": true,
+            "problemMatcher": [
+                {
+                    "owner": "custom ",
+                    "fileLocation": "absolute",
+                    "applyTo": "allDocuments",
+                    "background": {
+                        "activeOnStart": true
+                    },
+                    "pattern": {
+                        "regexp": "^$" // This is not needed but, required by the problemMatcher Object
+                    },
+                }
+            ],
+            "label": "task: debug",
+            "detail": "debug server dev"
+        },
+        {
+            "type": "npm",
+            "script": "debug:server:local",
+            "isBackground": true,
+            "problemMatcher": [
+                {
+                    "owner": "custom ",
+                    "fileLocation": "absolute",
+                    "applyTo": "allDocuments",
+                    "background": {
+                        "activeOnStart": true
+                    },
+                    "pattern": {
+                        "regexp": "^$" // This is not needed but, required by the problemMatcher Object
+                    },
+                }
+            ],
+            "label": "task: debug:local",
+            "detail": "debug server local"
+        }
+    ]
+}

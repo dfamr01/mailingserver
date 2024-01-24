@@ -1,23 +1,23 @@
 {
-  "compilerOptions": {
-    "target": "es6", // Specify ECMAScript target version
-    "module": "commonjs", // Specify module code generation
-    "moduleResolution": "node", // Choose a module resolution strategy
-    "baseUrl": ".", // Base directory to resolve non-relative module names
-    "paths": {
-      "shared/*": [
-        "./server/shared/*"
-      ],
-      "config/*": [
-        "./server/config/*"
-      ]
+    "compilerOptions": {
+        "target": "es6", // Specify ECMAScript target version
+        "module": "commonjs", // Specify module code generation
+        "moduleResolution": "node", // Choose a module resolution strategy
+        "baseUrl": ".", // Base directory to resolve non-relative module names
+        "paths": {
+            "shared/*": [
+                "./server/shared/*"
+            ],
+            "config/*": [
+                "./server/config/*"
+            ]
+        },
+        "checkJs": true, // Enable type checking for JavaScript files
+        "noImplicitAny": false, // Raise error on expressions and declarations with an implied 'any' type
+        "allowSyntheticDefaultImports": true // Allow default imports from modules with no default export
     },
-    "checkJs": true, // Enable type checking for JavaScript files
-    "noImplicitAny": false, // Raise error on expressions and declarations with an implied 'any' type
-    "allowSyntheticDefaultImports": true // Allow default imports from modules with no default export
-  },
-  "exclude": [
-    "node_modules", // Exclude large folder structures to improve VSCode performance
-    "**/node_modules/*"
-  ]
+    "exclude": [
+        "node_modules", // Exclude large folder structures to improve VSCode performance
+        "**/node_modules/*"
+    ]
 }

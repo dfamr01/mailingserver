@@ -3,6 +3,10 @@
     "version": "0.0.1",
     "private": true,
     "description": "Stream me mailing server",
+    "_moduleAliases": {
+        "shared": "./server/shared",
+        "config": "./server/config"
+    },
     "scripts": {
         "start": "npm run start:run",
         "start:run": "node server/server.js",
