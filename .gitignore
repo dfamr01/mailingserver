@@ -2,6 +2,8 @@
 ### Project Specific
 /logs/**
 /server/logs/**
+/preRun/.tempEnv
+/currencies
 
 ### Node
 /node/**
@@ -25,7 +27,8 @@ Desktop.ini
 .Spotlight-V100
 .Trashes
 
-# ### shared server files
+### shared server files
 # shared
 # shared/
 # /server/shared/
+temp/**
