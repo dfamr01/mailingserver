@@ -13,6 +13,7 @@ sgMail.setApiKey(config.sendGrid_api);
 
 function sendMail(mailOptions) {
     logger.info("Sending email");
+    console.log("Sending email");
     return sgMail.send(mailOptions);
 }
 
@@ -44,8 +45,11 @@ async function sendEmailDBEnqueuedImplement(whereQuery) {
                 };
 
                 logger.info("Finding queues ", query);
+                console.log("Finding queues");
+
                 const emailQueue = await EmailQueue.findAll(query);
                 if (!emailQueue || !emailQueue.length) {
+                    console.log("emailQueue: nothing to send page", page);
                     logger.info("emailQueue: nothing to send page", page);
                     return true;
                 }
