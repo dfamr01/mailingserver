@@ -1,13 +1,17 @@
-require("module-alias/register");
+require("module-alias/register"); //always at top
+const config = require("config/config");
+
+const sgMail = require("@sendgrid/mail");
 const express = require("config/express");
 const logger = require("log4js").getLogger("Mailer");
-// postgre should always go first
 const postgre = require("./config/postgre");
 const { sleep } = require("./shared/utils");
-const { sendEmailDBEnqueued } = require("./helpers/mailer");
+const emailer = require("./helpers/mailer");
+
+sgMail.setApiKey(config.sendGrid_api);
 
 async function run() {
-    sendEmailDBEnqueued();
+    const emailInstance = emailer(sgMail).start();
 }
 
 async function runServer() {
