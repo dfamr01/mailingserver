@@ -1,5 +1,5 @@
 require("module-alias/register");
-
+const express = require("config/express");
 const logger = require("log4js").getLogger("Mailer");
 // postgre should always go first
 const postgre = require("./config/postgre");
@@ -14,6 +14,7 @@ async function runServer() {
     try {
         await postgre;
         await sleep(5000);
+        express();
         await run();
     } catch (e) {
         logger.error("There was an error: ", e);
